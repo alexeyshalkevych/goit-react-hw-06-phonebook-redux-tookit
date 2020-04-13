@@ -1,8 +1,7 @@
 import { connect } from 'react-redux';
 import ContactForm from '../ContactForm/ContactForm';
-// import { addContact } from '../../redux/contacts/contactsActions';
 import { addContact } from '../../redux/contacts/contactsSlice';
-import { changeInput, resetForm } from '../../redux/form/formActions';
+import { changeInput, resetForm } from '../../redux/form/formSlice';
 import getForm from '../../redux/form/formSelectors';
 
 const mapStateToProps = state => ({

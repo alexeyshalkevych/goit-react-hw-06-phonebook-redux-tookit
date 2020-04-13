@@ -1,9 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { combineReducers } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
-import formReducer from './form/formReducer';
 import contactsReducer from './contacts/contactsSlice';
 import filterReducer from './filter/filterSlice';
+import formReducer from './form/formSlice';
 
 const rootReducer = combineReducers({
   contacts: contactsReducer,

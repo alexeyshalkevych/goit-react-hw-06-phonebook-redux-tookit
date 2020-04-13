@@ -16,7 +16,7 @@ const ContactForm = ({ addContact, changeInput, resetForm, form }) => {
   const handleChange = e => {
     const { name, value } = e.target;
 
-    changeInput(name, value);
+    changeInput({ [name]: value });
   };
 
   return (
