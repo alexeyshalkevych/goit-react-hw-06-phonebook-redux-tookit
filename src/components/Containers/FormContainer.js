@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import ContactForm from '../ContactForm/ContactForm';
-import { addContact } from '../../redux/contacts/contactsActions';
+// import { addContact } from '../../redux/contacts/contactsActions';
+import { addContact } from '../../redux/contacts/contactsSlice';
 import { changeInput, resetForm } from '../../redux/form/formActions';
 import getForm from '../../redux/form/formSelectors';
 
