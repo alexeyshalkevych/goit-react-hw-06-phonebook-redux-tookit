@@ -5,12 +5,10 @@ import Contact from '../Containers/ContactContainer';
 import { List } from './ContactList.styled';
 import Slide from '../../transition/slide.transition';
 
-const ContactList = ({ contacts }) => {
-  // const filteredContacts = filterContacts(contacts, filter);
-
+const ContactList = ({ filteredContacts }) => {
   return (
     <TransitionGroup component={List}>
-      {contacts.map(item => (
+      {filteredContacts.map(item => (
         <Slide key={item.id}>
           <Contact item={item} />
         </Slide>
@@ -20,7 +18,7 @@ const ContactList = ({ contacts }) => {
 };
 
 ContactList.propTypes = {
-  contacts: PropTypes.arrayOf(
+  filteredContacts: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.string.isRequired,
     }).isRequired,

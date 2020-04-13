@@ -1,5 +1,4 @@
 import { connect } from 'react-redux';
-// import { getAllContacts } from '../../redux/contacts/contactsActions';
 import { getAllContacts } from '../../redux/contacts/contactsSlice';
 import Phonebook from '../Phonebook/Phonebook';
 import { getContacts } from '../../redux/contacts/contactsSelectors';

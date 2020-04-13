@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import ContactFilter from '../ContactFilter/ContactFilter';
-import changeFilter from '../../redux/filter/filterActions';
+import { changeFilter } from '../../redux/filter/filterSlice';
 import { getContacts } from '../../redux/contacts/contactsSelectors';
 import getFilter from '../../redux/filter/filterSelectors';
 

@@ -3,7 +3,7 @@ import ContactList from '../ContactList/ContactList';
 import { getContactsWithFilter } from '../../redux/contacts/contactsSelectors';
 
 const mapStateToProps = state => ({
-  contacts: getContactsWithFilter(state),
+  filteredContacts: getContactsWithFilter(state),
 });
 
 export default connect(mapStateToProps)(ContactList);

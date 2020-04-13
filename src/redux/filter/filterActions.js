@@ -1,8 +1,5 @@
-import { CHANGE_FILTER } from '../actionTypes';
+import { createAction } from '@reduxjs/toolkit';
 
-const changeFilter = value => ({
-  type: CHANGE_FILTER,
-  payload: value,
-});
+const changeFilter = createAction('CHANGE_FILTER');
 
 export default changeFilter;
