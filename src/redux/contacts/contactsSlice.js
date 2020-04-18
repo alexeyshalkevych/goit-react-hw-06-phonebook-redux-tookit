@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { v4 as uuidv4 } from 'uuid';
-import { isInvalidContact, hasStateContact } from '../../utils/helpers';
+import { hasStateContact } from '../../utils/helpers';
 
 const contactSlice = createSlice({
   name: 'contacts',
@@ -9,7 +9,7 @@ const contactSlice = createSlice({
     GET_ALL_CONTACTS: (state, { payload }) => [...state, ...payload],
 
     ADD_CONTACT: (state, { payload }) =>
-      hasStateContact(state, payload) || isInvalidContact(payload)
+      hasStateContact(state, payload)
         ? state
         : [...state, { id: uuidv4(), ...payload }],
 

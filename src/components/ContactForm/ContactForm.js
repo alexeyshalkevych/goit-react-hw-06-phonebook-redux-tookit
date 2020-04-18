@@ -1,59 +1,70 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { FormContainer, Label, InputField, Button } from './ContactForm.styled';
+import { Formik, ErrorMessage } from 'formik';
+import FormSchema from './FormSchema';
+import {
+  FormContainer,
+  Label,
+  InputField,
+  Button,
+  ErrorInput,
+} from './ContactForm.styled';
 
-const ContactForm = ({ addContact, changeInput, resetForm, form }) => {
-  const { name, number } = form;
-
-  const handleSubmit = e => {
-    e.preventDefault();
-
-    addContact({ name, number });
-
-    resetForm();
+const ContactForm = ({ addContact }) => {
+  const initialValues = {
+    name: '',
+    number: 0,
   };
 
-  const handleChange = e => {
-    const { name, value } = e.target;
+  const handleSubmit = (values, { resetForm }) => {
+    addContact({ ...values });
 
-    changeInput({ [name]: value });
+    resetForm({});
   };
 
   return (
-    <FormContainer onSubmit={handleSubmit}>
-      <Label>
-        Name
-        <InputField
-          type="text"
-          name="name"
-          value={name}
-          onChange={handleChange}
-          autoComplete="off"
-        />
-      </Label>
-      <Label>
-        Number
-        <InputField
-          type="text"
-          name="number"
-          value={number}
-          onChange={handleChange}
-          autoComplete="off"
-        />
-      </Label>
-      <Button type="submit">Add contact</Button>
-    </FormContainer>
+    <Formik
+      initialValues={initialValues}
+      validationSchema={FormSchema}
+      onSubmit={handleSubmit}
+    >
+      {({ values, handleChange, handleSubmit, isSubmitting }) => (
+        <FormContainer onSubmit={handleSubmit}>
+          <Label htmlFor="name">
+            Name
+            <InputField
+              id="name"
+              type="text"
+              name="name"
+              value={values.name}
+              onChange={handleChange}
+              autoComplete="off"
+            />
+            <ErrorMessage name="name" component={ErrorInput} />
+          </Label>
+          <Label htmlFor="number">
+            Number
+            <InputField
+              id="number"
+              type="number"
+              name="number"
+              value={values.number === 0 ? '' : values.number}
+              onChange={handleChange}
+              autoComplete="off"
+            />
+            <ErrorMessage name="number" component={ErrorInput} />
+          </Label>
+          <Button type="submit" disabled={isSubmitting}>
+            Add contact
+          </Button>
+        </FormContainer>
+      )}
+    </Formik>
   );
 };
 
 ContactForm.propTypes = {
   addContact: PropTypes.func.isRequired,
-  form: PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    number: PropTypes.string.isRequired,
-  }).isRequired,
-  changeInput: PropTypes.func.isRequired,
-  resetForm: PropTypes.func.isRequired,
 };
 
 export default ContactForm;
